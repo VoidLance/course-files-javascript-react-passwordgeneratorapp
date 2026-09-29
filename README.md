@@ -1,73 +1,101 @@
-# React + TypeScript + Vite
+# Password Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A small React and TypeScript password generator built with Vite and Tailwind
+CSS. Choose a password length, optionally include numbers and special
+characters, generate a password, and copy it to the clipboard.
 
-Currently, two official plugins are available:
+## Why use it?
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Generate passwords between 6 and 20 characters.
+- Include uppercase and lowercase letters by default.
+- Toggle numbers and special characters.
+- Ensure each enabled character category is represented in the generated
+  password.
+- Copy the result with one click.
+- Run locally as a lightweight, client-side application with no backend or
+  account required.
 
-## React Compiler
+> **Security note:** Passwords are generated in the browser with
+> `Math.random()`. This is suitable for demos and everyday convenience, but it
+> is not a cryptographically secure password generator for high-risk
+> credentials.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Getting started
 
-## Expanding the ESLint configuration
+### Prerequisites
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Node.js 20.19+ or 22.12+
+- npm
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Installation
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Clone the repository, install its dependencies, and start the development
+server:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+git clone https://github.com/VoidLance/course-files-javascript-react-passwordgeneratorapp.git
+cd course-files-javascript-react-passwordgeneratorapp
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Open the local URL printed by Vite in your browser.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Usage
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. Set the desired password length with the slider.
+2. Choose whether to include numbers and special characters.
+3. Select **Generate Password**.
+4. Select **Copy** to copy the result to the clipboard.
+
+The clipboard action may require a secure browser context when the app is
+deployed outside of localhost.
+
+## Available scripts
+
+Run these commands from the project directory:
+
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the Vite development server with hot reload. |
+| `npm run build` | Type-check and create a production build in `dist/`. |
+| `npm run preview` | Preview the production build locally. |
+| `npm run lint` | Check the project with ESLint. |
+
+## Project structure
+
+```text
+src/
+├── components/PasswordGenerator.tsx  # Password generator interface
+├── utils/hooks.tsx                    # Password generation state and logic
+├── App.tsx                            # Application entry component
+└── main.tsx                           # React bootstrap
 ```
+
+## Support
+
+For questions or bugs, search existing issues in the repository first. If your
+problem is not already reported, open a new issue with:
+
+- A clear description of the problem or requested improvement
+- Steps to reproduce the issue
+- Your browser and Node.js versions
+- Relevant console output or screenshots
+
+## Contributing
+
+Contributions are welcome. To propose a change:
+
+1. Fork the repository and create a focused feature or fix branch.
+2. Install dependencies with `npm install`.
+3. Make the change and update documentation when behavior changes.
+4. Run `npm run lint` and `npm run build`.
+5. Open a pull request describing the change and validation performed.
+
+Please keep pull requests small, accessible, and consistent with the existing
+React, TypeScript, and Tailwind CSS patterns.
+
+## Maintainer
+
+This project is maintained by [VoidLance](https://github.com/VoidLance).
+Contributions and constructive feedback from the community are appreciated.
